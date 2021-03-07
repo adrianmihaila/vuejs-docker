@@ -2,6 +2,8 @@ FROM node:12.2.0-alpine
 
 MAINTAINER adi.mihaila@outlook.com
 
+USER :33
+
 RUN npm install -g http-server
 
 WORKDIR /var/www/html
@@ -12,6 +14,6 @@ ENV PATH /var/www/html/node_modules/.bin:$PATH
 RUN npm config set unsafe-perm true
 
 RUN npm install vue \
-    && yarn global add @vue/cli@4.5.11 --non-interactive
+    && npm install -g @vue/cli
 
 CMD [ "http-server", "dist" ]
